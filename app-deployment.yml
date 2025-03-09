@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fast-food-app
+  labels:
+    app: fast-food-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fast-food-app
+  template:
+    metadata:
+      labels:
+        app: fast-food-app
+    spec:
+      containers:
+        - name: app
+          image: 172074481079.dkr.ecr.us-east-1.amazonaws.com/fast-food-app:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: app-config
+          resources:
+            requests:
+              cpu: "500m"
+            limits:
+              cpu: "1000m"
+          env:
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: SPRING_DATASOURCE_PASSWORD
+            - name: MERCADO_PAGO_EXTERNAL_POS_ID
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: MERCADO_PAGO_EXTERNAL_POS_ID
+            - name: MERCADO_PAGO_SECRET_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: MERCADO_PAGO_SECRET_TOKEN
+            - name: MERCADO_PAGO_USER_ID
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: MERCADO_PAGO_USER_ID
