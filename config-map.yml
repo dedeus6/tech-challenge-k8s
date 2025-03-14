@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: app-config
 data:
-  SPRING_DATASOURCE_URL: jdbc:postgresql://fast-food-db.cz77kn37mgkf.us-east-1.rds.amazonaws.com:5432/fast-food
+  SPRING_DATASOURCE_URL: jdbc:postgresql://fast-food-db.cz77kn37mgkf.us-east-1.rds.amazonaws.com:5432/fast_food
