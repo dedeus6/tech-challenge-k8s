@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: 172074481079.dkr.ecr.us-east-1.amazonaws.com/fast-food-ecr-repository:0469e5c6637acf25e2223c9ea30c1f5060f28a1f
+          image: 791691623793.dkr.ecr.us-east-1.amazonaws.com/fast-food-ecr:21febfb49d1ebac86e87779d6e6274705fbbb2bd
           ports:
             - containerPort: 8080
           envFrom:
